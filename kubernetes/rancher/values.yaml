@@ -1,0 +1,12 @@
+#hostname: rancher.straile.blue
+#replicas: 1
+#ingress:
+#  tls:
+#    source: secret
+#    secretName: tls-rancher
+
+hostname: rancher.straile.blue
+replicas: 1
+ingress:
+  tls:
+    source: none
