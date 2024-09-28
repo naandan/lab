@@ -1,0 +1,52 @@
+ID: 001
+Nama Baju: Kaos Polos
+Kategori: Kaos
+Ukuran: S, M, L, XL
+Warna: Putih, Hitam, Abu-abu, Navy
+Harga: 75000
+Stok: 100
+Deskripsi: Kaos polos berbahan katun, nyaman dipakai sehari-hari.
+
+---
+
+ID: 002
+Nama Baju: Kemeja Flanel
+Kategori: Kemeja
+Ukuran: M, L, XL
+Warna: Merah Hitam, Hijau Hitam
+Harga: 120000
+Stok: 50
+Deskripsi: Kemeja flanel dengan motif kotak-kotak, cocok untuk tampilan casual.
+
+---
+
+ID: 003
+Nama Baju: Jaket Hoodie
+Kategori: Jaket
+Ukuran: M, L, XL, XXL
+Warna: Hitam, Abu-abu, Maroon
+Harga: 150000
+Stok: 80
+Deskripsi: Jaket hoodie berbahan fleece, hangat dan nyaman digunakan.
+
+---
+
+ID: 004
+Nama Baju: Blouse Batik
+Kategori: Blouse
+Ukuran: S, M, L
+Warna: Biru, Coklat, Merah
+Harga: 95000
+Stok: 30
+Deskripsi: Blouse dengan motif batik modern, cocok untuk acara formal maupun santai.
+
+---
+
+ID: 005
+Nama Baju: Celana Jeans
+Kategori: Celana
+Ukuran: 28, 30, 32, 34, 36
+Warna: Biru Tua, Hitam
+Harga: 175000
+Stok: 60
+Deskripsi: Celana jeans slim fit, nyaman dan stylish untuk berbagai kesempatan.
