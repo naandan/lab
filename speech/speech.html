@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text</title>
+</head>
+<body>
+    <h1>Speech to Text Demo</h1>
+    <button id="start-btn">Start Speech Recognition</button>
+    <p id="result">Hasil akan muncul di sini...</p>
+
+    <script>
+        // Pastikan browser mendukung SpeechRecognition API
+        var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            var recognition = new SpeechRecognition();
+            recognition.lang = 'en-US'; // Atur bahasa yang diinginkan
+            recognition.interimResults = false; // Menampilkan hasil sementara
+            recognition.maxAlternatives = 1;
+
+            // Mulai proses pengenalan suara ketika tombol diklik
+            document.getElementById('start-btn').addEventListener('click', function() {
+                recognition.start();
+            });
+
+            // Tampilkan hasil pengenalan suara
+            recognition.onresult = function(event) {
+                var transcript = event.results[0][0].transcript;
+                document.getElementById('result').textContent = transcript;
+            };
+
+            // Tangani error
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error detected: ' + event.error);
+            };
+        } else {
+            alert('Browser Anda tidak mendukung SpeechRecognition API.');
+        }
+    </script>
+</body>
+</html>

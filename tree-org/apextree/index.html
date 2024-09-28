@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Chart</title>
+    <script src="apextree.js"></script>
+    <style>
+        [data-self="core"] {
+            display: none;
+        }
+        
+        [id*="-core"] {
+            display: none;
+        }
+        .ellipsis {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="svg-tree"></div>
+    <script>
+        const data = {
+            "id": "core",
+            "data": {
+                "name": "Core",
+                "title": "Core",
+                "phone": "1234567890",
+            },
+            "children": [
+                {
+                    "id": "idB",
+                    "data": {
+                        "name": "Micheal Orsola ansk djn saj",
+                        "title": "HRD",
+                        "phone": "1234567890",
+                    },
+                    "children": [
+                        {
+                        "id": "idC",
+                        "data": {
+                            "name": "C",
+                            "title": "C",
+                            "phone": "1234567890",
+                        },
+                    },
+                        {
+                            "id": "idD",
+                            "data": {
+                                "name": "D",
+                                "title": "D",
+                                "phone": "1234567890",
+                            },
+                        }
+                    ]
+                },
+                {
+                    "id": "idE",
+                    "data": {
+                        "name": "E",
+                        "title": "E",
+                        "phone": "1234567890",
+                    },
+                    "children": [
+                        {
+                            "id": "idF",
+                            "data": {
+                                "name": "F",
+                                "title": "F",
+                                "phone": "1234567890",
+                            },
+                        }
+                    ]
+                }
+            ]
+        };
+
+        const options = {
+            width: '100%',
+            height: '96vh',
+            nodeWidth: 120,
+            nodeHeight: 80,
+            childrenSpacing: 50,
+            siblingSpacing: 20,
+            enableToolbar: true,
+            enableZoom: true,
+            direction: 'top',
+            canvasStyle: 'background: #f6f6f6;',
+            contentKey: 'data',
+            enableExpandCollapse: true,
+            nodeTemplate: (content) => {
+                return `<div style='display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 5px; font-family: "Arial", sans-serif;'>
+                    <p class="ellipsis" style='margin: 0; font-size: 11px; color: #999; border-bottom: 1px solid #999; width: 100%; padding: 3px 0px 6px;'>(${content.title})</p>
+                    <p class="ellipsis" style='margin: 0; font-size: 12px; color: #000; margin-top: 8px;'>${content.name}</p>
+                    <p class="ellipsis" style='margin: 0; font-size: 10px; color: #999; margin-top: 5px;'>${content.phone}</p>
+                    </div>`;
+            },
+        };
+        
+        const tree = new ApexTree(document.getElementById('svg-tree'), options);
+        const graph = tree.render(data);
+    </script>
+</body>
+</html>

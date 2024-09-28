@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <script src="d3.js"></script>
+    <script src="d3-org-chart.js"></script>
+    <script src="d3-flextree.js"></script>
+
+    <div class="chart-container" style="height:1200px; background-color:#F6F6F6"></div>
+
+    <script>
+        var dataFlattened = [
+            {
+                id: "1",
+                parentId: "",
+                name: "Super Root",
+                title: "",
+                contact: "",
+            },
+            {
+                id: "2",
+                parentId: "1",
+                name: "Smith",
+                title: "COO",
+                contact: "99887766",
+            },
+            {
+                id: "3",
+                parentId: "1",
+                name: "Kate",
+                title: "CTO",
+                contact: "99887766",
+            },
+            {
+                id: "4",
+                parentId: "3",
+                name: "HR team",
+                title: "HR team",
+                contact: "99887766",
+            },
+            {
+                id: "5",
+                parentId: "3",
+                name: "Erica",
+                title: "Manager of something",
+                contact: "99887766",
+            },
+            {
+                id: "6",
+                parentId: "3",
+                name: "Paul",
+                title: "Manager of something",
+                contact: "99887766",
+            },
+        ];
+
+        // Create the chart using JSON data
+        chart = new d3.OrgChart()
+            .container('.chart-container')
+            .data(dataFlattened)
+            .nodeWidth(d => 200)
+            .nodeHeight(d => 150)
+            // .initialZoom(0.7)
+            // .childrenMargin(d => 40)
+            .compactMarginBetween(d => 15)
+            // .compactMarginPair(d => 80)
+            .nodeContent(function(d, i, arr, state) {
+                return `
+                    <div style="padding-top:30px;background-color:none;margin-left:1px;height:${d.height}px;border-radius:2px;overflow:visible">
+                        <div style="height:${d.height - 32}px;padding-top:0px;background-color:white;border:1px solid lightgray;">
+                            <div style="padding:10px;text-align:center;display: flex; flex-direction: column; align-items: center;">
+                                <div style="color:#999;font-size:16px; border-bottom: 1px solid #999; width: 100%; padding: 3px 0px 6px;">(${d.data.title})</div>
+                                <div style="color:#000;font-size:16px;margin-top:15px">${d.data.name}</div>
+                                <div style="color:#999;font-size:14px;margin-top:6px">${d.data.contact}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            })
+            .render()
+            .expandAll();
+
+            hideSuperRootElements();
+
+            function hideSuperRootElements() {
+                d3.selectAll('.link')
+                    .each(function(d) {
+                        if (d.parent.id == "1") {
+                            d3.select(this).style('display', 'none');
+                        }
+                    });
+                d3.selectAll('.node')
+                    .filter(d => d.id === "1")
+                    .style('display', 'none');
+            }
+    </script>
+</body>
+
+</html>
