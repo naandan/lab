@@ -2,8 +2,8 @@ import discord
 from gemini import chat
 import os
 
-TOKEN = os.getenv('BOT_TOKEN', 'MTI0OTQwMjU5NDIwODc3NjIyOQ.G8zT_e.RgWDa_E7Oqph7xBQ83N_lyvHVyZMJbs_PkvaQc')
-ALLOWED_CHANNEL_ID = os.getenv('ALLOWED_CHANNEL_ID', '1249404586930737152')
+TOKEN = os.getenv('BOT_TOKEN', None)
+ALLOWED_CHANNEL_ID = os.getenv('ALLOWED_CHANNEL_ID', None)
 
 intents = discord.Intents.default()
 intents.message_content = True
